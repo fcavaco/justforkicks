@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script language="JavaScript" type="text/javascript" src="gol.js"></script>
+  </head>
+  <body>
+    <h1>Conway's Game of Life in javascript</h1>
+    <br/>
+    <div style="width:15%;float:left;padding:15px;">
+      <input id="generations" type="text" value="0"/>
+      <br/>
+      <input style="margin-top:10px;" type="button" value="Start" onclick="drawcycles()" />  
+    </div>
+    <div style="width:80%;float:left;padding:15px;">
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <script type="text/javascript">
+        
+        function drawcycles(){
+          let cycles = parseInt($("#generations").val());
+          let current = $("#cycle");
+          setup(cycles);
+          for(i = 0; i < cycles; i++){
+              drawGrid( grid );
+              // compute next grid based on existing grid
+              computeNextGrid(grid);
+          }
+        }
+    </script>
+  </body>
+</html>
