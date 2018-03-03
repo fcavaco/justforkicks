@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Zopa.RateCalculator": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\projects\\jobsTechTests\\Zopa\\MarketData.csv 1000"
+    }
+  }
+}

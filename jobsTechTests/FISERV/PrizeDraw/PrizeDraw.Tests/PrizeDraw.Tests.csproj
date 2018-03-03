@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="TestFiles\FiServ_PrizeDraw_TestInput.txt" />
+    <None Remove="TestFiles\FiServ_PrizeDraw_TestInputException1.txt" />
+    <None Remove="TestFiles\FiServ_PrizeDraw_TestInputException2.txt" />
+    <None Remove="TestFiles\FiServ_PrizeDraw_TestInputException3.txt" />
+    <None Remove="TestFiles\FiServ_PrizeDraw_TestInputException4.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="TestFiles\FiServ_PrizeDraw_TestInputException2.txt" />
+    <EmbeddedResource Include="TestFiles\FiServ_PrizeDraw_TestInputException4.txt" />
+    <EmbeddedResource Include="TestFiles\FiServ_PrizeDraw_TestInputException3.txt" />
+    <EmbeddedResource Include="TestFiles\FiServ_PrizeDraw_TestInputException1.txt" />
+    <EmbeddedResource Include="TestFiles\FiServ_PrizeDraw_TestInput.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.2.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
+    <PackageReference Include="NUnit" Version="3.9.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PrizeDraw\PrizeDraw.csproj" />
+  </ItemGroup>
+
+</Project>

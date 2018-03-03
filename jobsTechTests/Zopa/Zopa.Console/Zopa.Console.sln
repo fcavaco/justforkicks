@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zopa.RateCalculator", "Zopa.RateCalculator\Zopa.RateCalculator.csproj", "{27574951-AC65-4EE1-8F9E-F28BA8A6BFB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zopa.RateCalculator.Tests", "Zopa.RateCalculator.Tests\Zopa.RateCalculator.Tests.csproj", "{622F51E0-FF61-47AD-9059-12FB63B4FE13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27574951-AC65-4EE1-8F9E-F28BA8A6BFB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27574951-AC65-4EE1-8F9E-F28BA8A6BFB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27574951-AC65-4EE1-8F9E-F28BA8A6BFB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27574951-AC65-4EE1-8F9E-F28BA8A6BFB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{622F51E0-FF61-47AD-9059-12FB63B4FE13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{622F51E0-FF61-47AD-9059-12FB63B4FE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{622F51E0-FF61-47AD-9059-12FB63B4FE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{622F51E0-FF61-47AD-9059-12FB63B4FE13}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A20B2FB5-BEE3-4110-B8C8-A1C45710B206}
+	EndGlobalSection
+EndGlobal

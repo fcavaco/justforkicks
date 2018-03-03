@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PrizeDraw": {
+      "commandName": "Project",
+      "commandLineArgs": "\"c:\\projects\\justforkicks\\jobsTechTests\\FISERV\\PrizeDraw\\PrizeDraw\\bin\\Debug\\netcoreapp2.0\\input.txt\""
+    }
+  }
+}

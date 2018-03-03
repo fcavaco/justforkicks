@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+                <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+                <script language="JavaScript" type="text/javascript" src="sketch.js"></script>
+        </head>
+        <body>
+            <input type="button" value="click me" onclick="drawcycles()" />  
+            <input id="generations" type="text" value="0"/>  
+            <canvas id="canvas"></canvas>
+            
+            <script type="text/javascript">
+                
+                
+              
+              function drawcycles(){
+                let cycles = parseInt($("#generations").val());
+                let current = $("#cycle");
+                setup(cycles);
+                for(i = 0; i < cycles; i++){
+                
+                    drawGrid( grid );
+                    
+                    // compute next grid based on existing grid
+                    computeNextGrid(grid);
+                }
+                
+              }
+            </script>
+    </body>
+</html>
