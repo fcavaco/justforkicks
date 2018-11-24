@@ -1,7 +1,5 @@
 
-# Simple Lawn Mower - This is a coding exercise for server side applicants.
-
-- Please do not overengineer this exercise, but at the same time try to demonstrate knowledge of good code design principles.
+# Simple Lawn Mower.
 
 ## Short description
 
