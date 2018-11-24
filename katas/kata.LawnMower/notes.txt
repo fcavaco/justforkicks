@@ -1,0 +1,3 @@
+.net core 2.1 sdk
+1. used ./newKata.sh kata.lawnmower : creates new kata solution (library + nunit test projects)
+2. with visual studio created new web api project.

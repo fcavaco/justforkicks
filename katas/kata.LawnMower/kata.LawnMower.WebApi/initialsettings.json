@@ -1,0 +1,13 @@
+{
+  "settings": {
+    "gardensize": {
+      "lenght": "10",
+      "width": "10"
+    },
+    "position": {
+      "y": "5",
+      "x": "5",
+      "orientation": "north"
+    }
+  }
+}
