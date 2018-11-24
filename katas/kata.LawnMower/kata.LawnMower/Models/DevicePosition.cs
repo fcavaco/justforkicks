@@ -7,6 +7,7 @@
         char Orientation { get; }
 
         IPosition Move(ISize withinBoundary);
+        IPosition Turn(char newOrientation);
     }
     public static class Oriented
     {
@@ -68,6 +69,11 @@
             };
 
             return newPosition;
+        }
+
+        public IPosition Turn(char orientation)
+        {
+            return new DevicePosition(this.YAxis, this.XAxis, orientation);
         }
     }
 }

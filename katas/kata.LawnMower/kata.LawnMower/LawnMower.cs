@@ -68,7 +68,7 @@ namespace kata.LawnMower
 
             var newOrientation = NewClockwiseOrientation(position.Orientation);
 
-            var newPosition = NewPosition(position, newOrientation);
+            var newPosition = position.Turn(newOrientation);
 
             _buffer.Add(newPosition);
 
@@ -96,7 +96,7 @@ namespace kata.LawnMower
 
             var newOrientation = NewAntiClockwiseOrientation(position.Orientation);
 
-            var newPosition = NewPosition(position, newOrientation);
+            var newPosition = position.Turn(newOrientation);
 
             _buffer.Add(newPosition);
 
@@ -152,13 +152,5 @@ namespace kata.LawnMower
             return result;
 
         }
-
-        
-        private IPosition NewPosition(IPosition old, char orientation)
-        {
-            return new DevicePosition(old.YAxis, old.XAxis, orientation);
-        }
-
-       
     }
 }
