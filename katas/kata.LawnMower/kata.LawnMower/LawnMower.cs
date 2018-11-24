@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -51,22 +53,22 @@ namespace kata.LawnMower
         {
             _settings = settings;
             _buffer = buffer;
-            
+
             _buffer.Add(_settings.DevicePosition);
             _actuator = actuator;
         }
 
-        
+
         public IPosition CurrentPosition()
         {
             return _buffer.Peek().Result;
         }
-        
+
         public async Task<IPosition> TurnClockwise()
         {
             var position = await _buffer.Pop();
 
-            var newOrientation = NewClockwiseOrientation(position.Orientation);
+            var newOrientation = OrientationClockwiseTurn(position.Orientation);
 
             var newPosition = position.Turn(newOrientation);
 
@@ -94,7 +96,7 @@ namespace kata.LawnMower
         {
             var position = await _buffer.Pop();
 
-            var newOrientation = NewAntiClockwiseOrientation(position.Orientation);
+            var newOrientation = OrientationCounterClockwiseTurn(position.Orientation);
 
             var newPosition = position.Turn(newOrientation);
 
@@ -105,52 +107,32 @@ namespace kata.LawnMower
             return newPosition;
         }
 
-        private char NewClockwiseOrientation(char current)
+        private IList<Tuple<char, int>> cardinals = new List<Tuple<char, int>>()
         {
-            var result = current;
+            new Tuple<char, int>(Oriented.EAST,-3),
+            new Tuple<char, int>(Oriented.SOUTH,-2),
+            new Tuple<char, int>(Oriented.WEST,-1),
+            new Tuple<char, int>(Oriented.NORTH,0),
+            new Tuple<char, int>(Oriented.EAST,1),
+            new Tuple<char, int>(Oriented.SOUTH,2),
+            new Tuple<char, int>(Oriented.WEST,3)
+        };
 
-            switch (current)
-            {
-                case Oriented.NORTH:
-                    result = Oriented.EAST;
-                    break;
-                case Oriented.EAST:
-                    result = Oriented.SOUTH;
-                    break;
-                case Oriented.SOUTH:
-                    result = Oriented.WEST;
-                    break;
-                case Oriented.WEST:
-                    result = Oriented.NORTH;
-                    break;
-            }
-
-            return result;
-
+        private char OrientationClockwiseTurn(char currentOrientation)
+        {
+            var item = cardinals.First(x => x.Item1.Equals(currentOrientation));
+            var newItemIndex = (item.Item2 + 1) % 4;
+            var newOrientation = cardinals.Single(x => x.Item2 == newItemIndex).Item1;
+            return newOrientation;
         }
 
-        private char NewAntiClockwiseOrientation(char current)
+        private char OrientationCounterClockwiseTurn(char currentOrientation)
         {
-            var result = current;
-
-            switch (current)
-            {
-                case Oriented.NORTH:
-                    result = Oriented.WEST;
-                    break;
-                case Oriented.WEST:
-                    result = Oriented.SOUTH;
-                    break;
-                case Oriented.SOUTH:
-                    result = Oriented.EAST;
-                    break;
-                case Oriented.EAST:
-                    result = Oriented.NORTH;
-                    break;
-            }
-
-            return result;
-
+            var item = cardinals.First(x => x.Item1.Equals(currentOrientation));
+            var newItemIndex = (item.Item2 - 1) % 4;
+            var newOrientation = cardinals.Single(x => x.Item2 == newItemIndex).Item1;
+            return newOrientation;
         }
+       
     }
 }
