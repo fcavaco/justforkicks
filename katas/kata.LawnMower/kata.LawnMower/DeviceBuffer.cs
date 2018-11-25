@@ -6,18 +6,18 @@ namespace kata.LawnMower
 {
     public class DeviceBuffer : IBuffer
     {
-        private static Stack<IPosition> _buffer;
+        private static Queue<IPosition> _buffer;
 
         public DeviceBuffer()
         {
-            _buffer = new Stack<IPosition>();
+            _buffer = new Queue<IPosition>();
         }
 
         public void Add(IPosition position)
         {
             lock (_buffer)
             {
-                 _buffer.Push(position);
+                 _buffer.Enqueue(position);
             }
         }
 
@@ -28,7 +28,7 @@ namespace kata.LawnMower
 
         public async Task<IPosition> Pop()
         {
-            return _buffer.Pop();
+            return _buffer.Dequeue();
         }
     }
 }

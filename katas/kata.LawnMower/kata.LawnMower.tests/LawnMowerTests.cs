@@ -64,7 +64,7 @@ namespace Tests
 
             IPosition setting = new DevicePosition(5, 5, currentOrientation) as IPosition;
             _initialSettingsMock.Setup(x => x.DevicePosition).Returns(setting);
-
+            _buffer = new DeviceBuffer();
             _device = new SLMMDevice(_initialSettingsMock.Object, _buffer,_actuator);
 
             // act
@@ -99,7 +99,7 @@ namespace Tests
 
             // act
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            var position = await _device.TurnAntiClockwise();
+            var position = await _device.TurnCounterClockwise();
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
 
@@ -115,7 +115,7 @@ namespace Tests
             // arrange
             IPosition setting = new DevicePosition(5, 5, start) as IPosition;
             _initialSettingsMock.Setup(x => x.DevicePosition).Returns(setting);
-
+            _buffer = new DeviceBuffer();
             _device = new SLMMDevice(_initialSettingsMock.Object, _buffer,_actuator);
 
             IPosition position=_device.CurrentPosition();
@@ -138,6 +138,7 @@ namespace Tests
             // arrange
             IPosition setting = new DevicePosition(5, 5, start) as IPosition;
             _initialSettingsMock.Setup(x => x.DevicePosition).Returns(setting);
+            _buffer = new DeviceBuffer();
             _device = new SLMMDevice(_initialSettingsMock.Object, _buffer,_actuator);
 
             IPosition position = _device.CurrentPosition();
@@ -145,7 +146,7 @@ namespace Tests
             // act
             for (int i = 0; i < numberTurns; i++)
             {
-                position = await _device.TurnAntiClockwise();
+                position = await _device.TurnCounterClockwise();
             }
 
             // assert
@@ -162,11 +163,11 @@ namespace Tests
 
             IPosition setting = new DevicePosition(5, 5, currentOrientation) as IPosition;
             _initialSettingsMock.Setup(x => x.DevicePosition).Returns(setting);
-
-            _device = new SLMMDevice(_initialSettingsMock.Object, _buffer,_actuator);
+            _buffer = new DeviceBuffer();
+            var _device = new SLMMDevice(_initialSettingsMock.Object, _buffer,_actuator);
 
             // act
-            var position = await _device.TurnAntiClockwise();
+            var position = await _device.TurnCounterClockwise();
 
             // assert
             Assert.AreEqual(expectedOrientation, position.Orientation);
@@ -185,6 +186,7 @@ namespace Tests
 
             IPosition setting = new DevicePosition(5, 5, orientation) as IPosition;
             _initialSettingsMock.Setup(x => x.DevicePosition).Returns(setting);
+            _buffer = new DeviceBuffer();
             _device = new SLMMDevice(_initialSettingsMock.Object, _buffer, _actuator);
 
             var position = _device.CurrentPosition();
@@ -209,6 +211,7 @@ namespace Tests
 
             IPosition setting = new DevicePosition(5, 5, orientation) as IPosition;
             _initialSettingsMock.Setup(x => x.DevicePosition).Returns(setting);
+            _buffer = new DeviceBuffer();
             _device = new SLMMDevice(_initialSettingsMock.Object, _buffer, _actuator);
 
             var position = _device.CurrentPosition();
@@ -230,6 +233,7 @@ namespace Tests
         {
             IPosition setting = new DevicePosition(5, 5, orientation) as IPosition;
             _initialSettingsMock.Setup(x => x.DevicePosition).Returns(setting);
+            _buffer = new DeviceBuffer();
             _device = new SLMMDevice(_initialSettingsMock.Object, _buffer, _actuator);
 
             var position = _device.CurrentPosition();
@@ -252,8 +256,9 @@ namespace Tests
         {
             IPosition setting = new DevicePosition(5, 5, orientation) as IPosition;
             _initialSettingsMock.Setup(x => x.DevicePosition).Returns(setting);
+            _buffer = new DeviceBuffer();
             _device = new SLMMDevice(_initialSettingsMock.Object, _buffer, _actuator);
-
+            
             var position = _device.CurrentPosition();
 
             _device.Move();

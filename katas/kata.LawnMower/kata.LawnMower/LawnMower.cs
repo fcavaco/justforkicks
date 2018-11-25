@@ -42,7 +42,15 @@ namespace kata.LawnMower
             }
         }
     }
-    public class SLMMDevice
+
+    public interface IControlledDevice
+    {
+        IPosition CurrentPosition();
+        Task<IPosition> TurnClockwise();
+        Task<IPosition> TurnCounterClockwise();
+        Task<IPosition> Move();
+    }
+    public class SLMMDevice:IControlledDevice
     {
         private readonly ISettings _settings;
         private IPosition _currentPosition;
@@ -81,7 +89,7 @@ namespace kata.LawnMower
 
         public async Task<IPosition> Move()
         {
-            var oldPos = this.CurrentPosition();
+            var oldPos = await _buffer.Pop();
 
             var newPos = oldPos.Move(_settings.GardenSize);
 
@@ -92,7 +100,7 @@ namespace kata.LawnMower
             return newPos;
         }
 
-        public async Task<IPosition> TurnAntiClockwise()
+        public async Task<IPosition> TurnCounterClockwise()
         {
             var position = await _buffer.Pop();
 

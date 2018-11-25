@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using kata.LawnMower.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace kata.LawnMower.WebApi.Controllers
@@ -8,18 +10,18 @@ namespace kata.LawnMower.WebApi.Controllers
     [ApiController]
     public class LawnMowerController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private readonly IControlledDevice _device;
+        public LawnMowerController(IControlledDevice device)
         {
-            return new string[] { "value1", "value2" };
+            _device = device;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        // GET api/lawnmower/positions/current
+        [HttpGet("/positions/current")]
+        public async Task<IActionResult> GetCurrentPosition()
         {
-            return "value";
+            var position = _device.CurrentPosition();
+            return Ok(position);
         }
 
         // POST api/values
